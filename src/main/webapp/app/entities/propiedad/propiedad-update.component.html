@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-propiedad-heading" jhiTranslate="kasufyApp.propiedad.home.createOrEditLabel">Create or edit a Propiedad</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.descripcion" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.tipo" for="field_tipo">Tipo</label>
+                    <input type="text" class="form-control" name="tipo" id="field_tipo"
+                           formControlName="tipo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.imagen" for="field_imagen">Imagen</label>
+                    <input type="text" class="form-control" name="imagen" id="field_imagen"
+                           formControlName="imagen"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.geoRef" for="field_geoRef">Geo Ref</label>
+                    <input type="text" class="form-control" name="geoRef" id="field_geoRef"
+                           formControlName="geoRef"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.precio" for="field_precio">Precio</label>
+                    <input type="number" class="form-control" name="precio" id="field_precio"
+                           formControlName="precio"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.direccion" for="field_direccion">Direccion</label>
+                    <select class="form-control" id="field_direccion" name="direccion" formControlName="direccion">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="direccionOption.id === editForm.get('direccion').value?.id ? editForm.get('direccion').value : direccionOption" *ngFor="let direccionOption of direccions; trackBy: trackDireccionById">{{direccionOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.propiedad.detalle" for="field_detalle">Detalle</label>
+                    <select class="form-control" id="field_detalle" name="detalle" formControlName="detalle">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="detalleOption.id === editForm.get('detalle').value?.id ? editForm.get('detalle').value : detalleOption" *ngFor="let detalleOption of detalles; trackBy: trackDetalleById">{{detalleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Propiedad.
+    -->
+    <changeSet id="20191023001628-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="direccion_id"
+                                 baseTableName="propiedad"
+                                 constraintName="fk_propiedad_direccion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="direccion"/>
+
+        <addForeignKeyConstraint baseColumnNames="detalle_id"
+                                 baseTableName="propiedad"
+                                 constraintName="fk_propiedad_detalle_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="detalle"/>
+
+    </changeSet>
+</databaseChangeLog>

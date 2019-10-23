@@ -1,0 +1,28 @@
+{
+  "kasufyApp": {
+    "detalle": {
+      "home": {
+        "title": "Detalles",
+        "createLabel": "Crear nuevo Detalle",
+        "createOrEditLabel": "Crear o editar Detalle",
+        "notFound": "No Detalles found"
+      },
+      "created": "Un nuevo Detalle ha sido creado con el identificador {{ param }}",
+      "updated": "Un Detalle ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Detalle ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Detalle {{ id }}?"
+      },
+      "detail": {
+        "title": "Detalle"
+      },
+      "numRecamara": "Num Recamara",
+      "numCocina": "Num Cocina",
+      "numBano": "Num Bano",
+      "numSala": "Num Sala",
+      "numEstudio": "Num Estudio",
+      "numGarage": "Num Garage",
+      "numJardin": "Num Jardin"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="detalle">
+            <h2><span jhiTranslate="kasufyApp.detalle.detail.title">Detalle</span> {{detalle.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kasufyApp.detalle.numRecamara">Num Recamara</span></dt>
+                <dd>
+                    <span>{{detalle.numRecamara}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.detalle.numCocina">Num Cocina</span></dt>
+                <dd>
+                    <span>{{detalle.numCocina}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.detalle.numBano">Num Bano</span></dt>
+                <dd>
+                    <span>{{detalle.numBano}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.detalle.numSala">Num Sala</span></dt>
+                <dd>
+                    <span>{{detalle.numSala}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.detalle.numEstudio">Num Estudio</span></dt>
+                <dd>
+                    <span>{{detalle.numEstudio}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.detalle.numGarage">Num Garage</span></dt>
+                <dd>
+                    <span>{{detalle.numGarage}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.detalle.numJardin">Num Jardin</span></dt>
+                <dd>
+                    <span>{{detalle.numJardin}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/detalle', detalle.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

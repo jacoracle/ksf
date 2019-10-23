@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="kasufyApp.propiedad.home.title">Propiedads</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-propiedad" [routerLink]="['/propiedad/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="kasufyApp.propiedad.home.createLabel">
+            Create a new Propiedad
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="propiedads?.length === 0">
+        <span jhiTranslate="kasufyApp.propiedad.home.notFound">No propiedads found</span>
+    </div>
+    <div class="table-responsive" *ngIf="propiedads?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nombre"><span jhiTranslate="kasufyApp.propiedad.nombre">Nombre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descripcion"><span jhiTranslate="kasufyApp.propiedad.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tipo"><span jhiTranslate="kasufyApp.propiedad.tipo">Tipo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imagen"><span jhiTranslate="kasufyApp.propiedad.imagen">Imagen</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="geoRef"><span jhiTranslate="kasufyApp.propiedad.geoRef">Geo Ref</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="precio"><span jhiTranslate="kasufyApp.propiedad.precio">Precio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="direccion.id"><span jhiTranslate="kasufyApp.propiedad.direccion">Direccion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="detalle.id"><span jhiTranslate="kasufyApp.propiedad.detalle">Detalle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let propiedad of propiedads ;trackBy: trackId">
+                <td><a [routerLink]="['/propiedad', propiedad.id, 'view' ]">{{propiedad.id}}</a></td>
+                <td>{{propiedad.nombre}}</td>
+                <td>{{propiedad.descripcion}}</td>
+                <td>{{propiedad.tipo}}</td>
+                <td>{{propiedad.imagen}}</td>
+                <td>{{propiedad.geoRef}}</td>
+                <td>{{propiedad.precio}}</td>
+                <td>
+                    <div *ngIf="propiedad.direccion">
+                        <a [routerLink]="['/direccion', propiedad.direccion?.id, 'view' ]" >{{propiedad.direccion?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="propiedad.detalle">
+                        <a [routerLink]="['/detalle', propiedad.detalle?.id, 'view' ]" >{{propiedad.detalle?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/propiedad', propiedad.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/propiedad', propiedad.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/propiedad', { outlets: { popup: propiedad.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="propiedads?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

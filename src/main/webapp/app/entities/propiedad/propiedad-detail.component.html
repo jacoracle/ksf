@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="propiedad">
+            <h2><span jhiTranslate="kasufyApp.propiedad.detail.title">Propiedad</span> {{propiedad.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="kasufyApp.propiedad.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{propiedad.nombre}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.propiedad.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{propiedad.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.propiedad.tipo">Tipo</span></dt>
+                <dd>
+                    <span>{{propiedad.tipo}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.propiedad.imagen">Imagen</span></dt>
+                <dd>
+                    <span>{{propiedad.imagen}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.propiedad.geoRef">Geo Ref</span></dt>
+                <dd>
+                    <span>{{propiedad.geoRef}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.propiedad.precio">Precio</span></dt>
+                <dd>
+                    <span>{{propiedad.precio}}</span>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.propiedad.direccion">Direccion</span></dt>
+                <dd>
+                    <div *ngIf="propiedad.direccion">
+                        <a [routerLink]="['/direccion', propiedad.direccion?.id, 'view']">{{propiedad.direccion?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="kasufyApp.propiedad.detalle">Detalle</span></dt>
+                <dd>
+                    <div *ngIf="propiedad.detalle">
+                        <a [routerLink]="['/detalle', propiedad.detalle?.id, 'view']">{{propiedad.detalle?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/propiedad', propiedad.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

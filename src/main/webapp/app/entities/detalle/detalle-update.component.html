@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-detalle-heading" jhiTranslate="kasufyApp.detalle.home.createOrEditLabel">Create or edit a Detalle</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.detalle.numRecamara" for="field_numRecamara">Num Recamara</label>
+                    <input type="number" class="form-control" name="numRecamara" id="field_numRecamara"
+                           formControlName="numRecamara"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.detalle.numCocina" for="field_numCocina">Num Cocina</label>
+                    <input type="number" class="form-control" name="numCocina" id="field_numCocina"
+                           formControlName="numCocina"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.detalle.numBano" for="field_numBano">Num Bano</label>
+                    <input type="number" class="form-control" name="numBano" id="field_numBano"
+                           formControlName="numBano"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.detalle.numSala" for="field_numSala">Num Sala</label>
+                    <input type="number" class="form-control" name="numSala" id="field_numSala"
+                           formControlName="numSala"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.detalle.numEstudio" for="field_numEstudio">Num Estudio</label>
+                    <input type="number" class="form-control" name="numEstudio" id="field_numEstudio"
+                           formControlName="numEstudio"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.detalle.numGarage" for="field_numGarage">Num Garage</label>
+                    <input type="number" class="form-control" name="numGarage" id="field_numGarage"
+                           formControlName="numGarage"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="kasufyApp.detalle.numJardin" for="field_numJardin">Num Jardin</label>
+                    <input type="number" class="form-control" name="numJardin" id="field_numJardin"
+                           formControlName="numJardin"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

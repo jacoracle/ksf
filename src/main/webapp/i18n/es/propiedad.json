@@ -1,0 +1,29 @@
+{
+  "kasufyApp": {
+    "propiedad": {
+      "home": {
+        "title": "Propiedads",
+        "createLabel": "Crear nuevo Propiedad",
+        "createOrEditLabel": "Crear o editar Propiedad",
+        "notFound": "No Propiedads found"
+      },
+      "created": "Un nuevo Propiedad ha sido creado con el identificador {{ param }}",
+      "updated": "Un Propiedad ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Propiedad ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Propiedad {{ id }}?"
+      },
+      "detail": {
+        "title": "Propiedad"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "tipo": "Tipo",
+      "imagen": "Imagen",
+      "geoRef": "Geo Ref",
+      "precio": "Precio",
+      "direccion": "Direccion",
+      "detalle": "Detalle"
+    }
+  }
+}
